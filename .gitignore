@@ -1,0 +1,17 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+
+# Environment variables and secrets
+backend/.env
+
+# ChromaDB generated data
+backend/chroma_db/
+
+# Node dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Local environment files
+.env

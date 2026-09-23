@@ -1,0 +1,426 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #202938;
+  background: #f4f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f4f7fb;
+  color: #202938;
+}
+
+button,
+textarea,
+select,
+input {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+.app-header {
+  background: #172b4d;
+  color: #fff;
+  padding: 22px clamp(20px, 7%, 110px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.app-header h1 {
+  margin: 0 0 6px;
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.app-header p {
+  margin: 0;
+  color: #d6dfed;
+  font-size: 15px;
+}
+
+.header-tag {
+  border: 1px solid #60789d;
+  border-radius: 24px;
+  padding: 9px 15px;
+  font-size: 12px;
+  white-space: nowrap;
+  color: #e8eef8;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Navigation */
+
+.section-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px clamp(20px, 7%, 110px);
+  background: #fff;
+  border-bottom: 1px solid #e1e6ef;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #4b5870;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-button:hover {
+  background: #f3f6fc;
+  color: #174ea6;
+}
+
+.nav-button.active {
+  background: #e8efff;
+  border-color: #d8e4ff;
+  color: #174ea6;
+  font-weight: 650;
+}
+
+/* Main layout */
+
+.main-content {
+  width: 100%;
+  max-width: 1120px;
+  margin: 28px auto;
+  padding: 0 24px;
+  flex: 1;
+}
+
+.main-content h2 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 2.4vw, 30px);
+  letter-spacing: -0.4px;
+}
+
+.section-description {
+  color: #667085;
+  line-height: 1.55;
+  margin: 0 0 20px;
+  font-size: 15px;
+  max-width: 900px;
+}
+
+/* Form and content cards */
+
+.question-box,
+.answer-card,
+.evidence-card,
+.placeholder-card {
+  background: #fff;
+  border: 1px solid #e1e7f0;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(24, 44, 78, 0.025);
+}
+
+.question-box {
+  display: block;
+}
+
+/* Compact, professional Interview Guide controls */
+
+.question-box label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #344054;
+  margin: 0 0 7px;
+}
+
+.question-box select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 42px 10px 13px;
+  margin: 0 0 14px;
+  border: 1px solid #cfd8e6;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #202938;
+  font-size: 14px;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.question-box select:focus {
+  border-color: #3675d5;
+  box-shadow: 0 0 0 3px rgba(54, 117, 213, 0.12);
+}
+
+/* Put the Get Answer button beside the question selector on wider screens.
+   The expert selector remains full-width. */
+
+.question-box select:nth-of-type(2) {
+  display: inline-block;
+  width: calc(100% - 158px);
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid #245fc7;
+  border-radius: 8px;
+  padding: 11px 20px;
+  background: #245fc7;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.3;
+  vertical-align: middle;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #194fae;
+}
+
+.primary-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.primary-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+/* Ask AI input */
+
+.question-box textarea {
+  display: block;
+  width: 100%;
+  min-height: 115px;
+  resize: vertical;
+  border: 1px solid #cfd8e6;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 0 0 12px;
+  color: #202938;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.55;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.question-box textarea:focus {
+  border-color: #3675d5;
+  box-shadow: 0 0 0 3px rgba(54, 117, 213, 0.12);
+}
+
+.question-box textarea::placeholder {
+  color: #98a2b3;
+}
+
+/* Results */
+
+.results {
+  margin-top: 22px;
+}
+
+.answer-card h3,
+.evidence-section h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 650;
+  color: #26354a;
+}
+
+.answer-text {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  color: #344054;
+  font-size: 14px;
+}
+
+.answer-text p:first-child {
+  margin-top: 0;
+}
+
+.answer-text p:last-child {
+  margin-bottom: 0;
+}
+
+.answer-text ul,
+.answer-text ol {
+  padding-left: 22px;
+  line-height: 1.7;
+}
+
+.evidence-section {
+  margin-top: 22px;
+}
+
+.evidence-section h3 {
+  margin: 0 0 12px;
+}
+
+.evidence-card {
+  padding: 15px 17px;
+  margin-bottom: 12px;
+}
+
+.evidence-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  color: #667085;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+
+.evidence-meta strong {
+  color: #344054;
+  font-weight: 650;
+}
+
+.evidence-card p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 14px;
+  color: #344054;
+  overflow-wrap: anywhere;
+}
+
+.error-message {
+  color: #b42318;
+  background: #fff1f0;
+  border: 1px solid #ffd5d2;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.placeholder-card {
+  color: #667085;
+  line-height: 1.6;
+}
+
+/* Footer */
+
+.app-footer {
+  text-align: center;
+  color: #7a8496;
+  font-size: 12px;
+  padding: 22px 16px;
+  margin-top: auto;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 700px) {
+  .app-header {
+    padding: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header-tag {
+    font-size: 11px;
+  }
+
+  .section-nav {
+    padding: 10px 16px;
+    gap: 5px;
+  }
+
+  .nav-button {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .main-content {
+    margin: 22px auto;
+    padding: 0 16px;
+  }
+
+  .question-box,
+  .answer-card,
+  .evidence-card,
+  .placeholder-card {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .question-box select {
+    min-height: 44px;
+    margin-bottom: 13px;
+    font-size: 14px;
+  }
+
+  /* Stack the question selector and button neatly on small screens. */
+  .question-box select:nth-of-type(2) {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+
+  .question-box textarea {
+    min-height: 105px;
+  }
+
+  .evidence-meta {
+    gap: 6px 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .app-header h1 {
+    font-size: 21px;
+  }
+
+  .section-nav {
+    gap: 3px;
+  }
+
+  .nav-button {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+}
